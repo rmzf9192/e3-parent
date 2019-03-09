@@ -1,0 +1,13 @@
+{
+  "versions":
+  [
+    {
+      "code" : "1.0.0",
+      "author" : "roman.zhang",
+      "createDate" : "2019-03-09",
+      "comment" : [
+        "初始版本-分布式架构搭建"
+      ]
+    }
+  ]
+}
