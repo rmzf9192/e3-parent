@@ -2,6 +2,9 @@ package com.el.e3mall.service.impl;
 
 import java.util.List;
 
+import com.el.e3mall.common.pojo.EasyUIDataGridResult;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +41,23 @@ public class ItemServiceImpl implements ItemService {
 			return list.get(0);
 		}
 		return null;*/
+	}
+
+	@Override
+	public EasyUIDataGridResult getItemList(Integer page, Integer rows) {
+		//设置分页信息
+		PageHelper.startPage(page,rows);
+		//执行查询结果
+		TbItemExample tbItemExample = new TbItemExample();
+		List<TbItem> tbItems = itemMapper.selectByExample(tbItemExample);
+		//创建一个空的，返回对象
+		EasyUIDataGridResult easyUIDataGridResult = new EasyUIDataGridResult();
+		easyUIDataGridResult.setRows(tbItems);
+		//取分页结果
+		PageInfo<TbItem> tbItemPageInfo = new PageInfo<>(tbItems);
+		long total = tbItemPageInfo.getTotal();
+		easyUIDataGridResult.setTotal(total);
+		return easyUIDataGridResult;
 	}
 
 }

@@ -11,6 +11,7 @@
     <modules>
         <module>e3-common</module>
         <module>e3-manager</module>
+        <module>e3-manager-web</module>
     </modules>
     <!-- 集中定义依赖版本号 -->
     <properties>
