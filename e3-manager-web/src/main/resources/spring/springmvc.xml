@@ -20,7 +20,7 @@
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
 	<!-- 引用dubbo服务 -->
-	<dubbo:application name="e3-manager-web"></dubbo:application>
+	<dubbo:application name="e3-customer"></dubbo:application>
 	<dubbo:registry protocol="zookeeper" address="192.168.137.1:2181"></dubbo:registry>
 	<dubbo:reference interface="com.el.e3mall.service.ItemService" id="itemService"></dubbo:reference>
 </beans>

@@ -13,13 +13,19 @@
 	<!-- 配置包扫描器 -->
 	<context:component-scan base-package="com.el.e3mall.service"/>
     <!--使用dubbo发布服务-->
-    <dubbo:application name="e3-manger" ></dubbo:application>
+    <dubbo:application name="e3-provider" ></dubbo:application>
 	<dubbo:registry protocol="zookeeper" address="192.168.137.1:2181">
 
 	</dubbo:registry>
-	<!-- 用dubbo协议在20880端口暴露服务-->
+	<!-- 用dubbo协议在20882端口暴露服务-->
 	<dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
 
 	<!--声明暴露服务的服务接口-->
 	<dubbo:service interface="com.el.e3mall.service.ItemService" ref="itemServiceImpl" timeout="600000"></dubbo:service>
+
+	<!--指定服务的实现-->
+	<bean id="itemServiceImpl" class="com.el.e3mall.service.impl.ItemServiceImpl"/>
+
+	<!-- 连接监控中心 -->
+	<dubbo:monitor protocol="registry"></dubbo:monitor>
 </beans>
